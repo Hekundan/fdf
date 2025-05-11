@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror -g -o0
 
 SRCS = ft_atoi.c \
 ft_bzero.c \
@@ -49,7 +49,8 @@ ft_lstiter.c \
 ft_lstlast.c \
 ft_lstmap.c \
 ft_lstnew.c \
-ft_lstsize.c
+ft_lstsize.c \
+ft_split.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 22:11:33 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/10 22:52:34 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/12 01:16:50 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,32 @@
 # define WINDOW_HEIGHT 1000
 # define WINDOW_WIDTH 1000
 # define WINDOW_NAME "FDF"
+# define ANGLE 0.7854f
+
+typedef struct s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef struct s_points
 {
-	unsigned int	fdf_coords[3];
-	float			projected[3];
-}	t_points;
+	unsigned int		fdf_coords[3];
+	float				projected[3];
+	struct s_points		*lower;
+	struct s_points		*right;
+	char				calculated;
 
+}	t_points;
 
 typedef struct s_fdf
 {
 	unsigned int	dims[2];
-	t_points		***data;
+	unsigned int	extremes[2];
+	t_points		*data;
 }	t_fdf;
-
-//Just a shell for function pointers of simple y = f(x) float operations
-typedef float	(*t_operation)(float x);
-
-typedef struct s_rotation_matrix
-{
-	float		angle;
-	t_operation	*operations[3][3];
-	float		result_matrix[3][3];
-}	t_rotation_matrix;
 
 typedef struct s_mlx_vars
 {
@@ -47,8 +50,18 @@ typedef struct s_mlx_vars
 	void	*win;
 }	t_mlx_vars;
 
+typedef struct s_mlx_combined
+{
+	t_mlx_vars	*mlx;
+	t_data		*image;
+}	t_mlx_combined;
+
+int			close_win(int key, t_data *image, t_mlx_vars *data);
 t_mlx_vars	*create_window(void);
 void		destroy_window(t_mlx_vars *vars);
-t_list		*get_lines(char	*filename);
+int			is_overflow(char *s);
+t_fdf		*parse_values(char *filename);
+void		calc_vals(t_fdf *fdf);
+t_data		*push_image(t_mlx_vars *mlx, t_fdf *fdf);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 22:45:51 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/10 23:02:25 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:55:58 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@
 
 int	main(void)
 {
-	t_list	*result;
-	t_list	*next;
+	t_fdf			*result;
+	unsigned int	count;
 
-	result = get_lines("test.fdf");
-	while (result)
+	result = parse_values("test.fdf");
+	count = 0;
+	while (count < (result->dims[0] * result->dims[1]))
 	{
-		printf("%s", (char *) result->content);
-		next = result->next;
-		ft_lstdelone(result, free);
-		result = next;
+		printf("%i ", (result->data[count]).fdf_coords[2]);
+		if (count % result->dims[0] == result->dims[0] - 1)
+			printf("\n");
+		count++;
 	}
+	free(result->data);
+	free(result);
 	return (0);
 }

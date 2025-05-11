@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Test Parse",
+      "type": "cppdbg",
+      "request": "launch",
+
+      // 1) point to your test binary under the sub‐folder
+      "program": "${workspaceFolder}/src/parsing/test_parse",
+
+      // 2) run GDB with cwd in the same folder you built in
+      "cwd": "${workspaceFolder}/src/parsing",
+
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": false,
+
+      // 4) map the compile‐time source roots to your workspace paths
+      //    (replace /home/you/project with your real absolute path)
+      "sourceFileMap": {
+        "/home/johartma/dev/rank02/fdf/src/parsing": "${workspaceFolder}/src/parsing"
+      },
+
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set disassembly flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

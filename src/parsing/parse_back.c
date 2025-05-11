@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_back.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 22:10:57 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/12 01:53:13 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/12 01:30:32 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,20 +137,4 @@ static t_fdf	*init_values(t_list *lines)
 	return (self);
 }
 
-t_fdf	*parse_values(char	*filename)
-{
-	t_list		*lines;
-	t_points	*points;
-	t_fdf		*self;
-
-	lines = get_lines(filename);
-	self = init_values(lines);
-	points = malloc(sizeof(*points) * (self->dims)[0] * (self->dims)[1]);
-	if (!points)
-		error(1, 0, "Malloc Error");
-	parse_core(points, self, lines);
-	ft_lstclear(&lines, free);
-	self->data = points;
-	return (self);
-}
-
+t_fdf

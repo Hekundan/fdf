@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 17:03:16 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/11 18:44:46 by johartma         ###   ########.fr       */
+/*   Created: 2025/05/08 19:13:30 by johartma          #+#    #+#             */
+/*   Updated: 2025/05/11 18:39:47 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	is_whitespace(char c)
+#include "../../lib/libft/libft.h"
+#include <limits.h>
+
+int	is_whitespace(char c)
 {
 	if (((c >= 9) && (c <= 13)) || (c == 32))
 		return (1);
@@ -18,10 +21,10 @@ static int	is_whitespace(char c)
 		return (0);
 }
 
-int	ft_atoi(const char *str)
+static	long long	ft_atoll(const char *str)
 {
-	int	to_rtrn;
-	int	sign;
+	long long	to_rtrn;
+	int			sign;
 
 	to_rtrn = 0;
 	sign = 1;
@@ -41,4 +44,17 @@ int	ft_atoi(const char *str)
 	}
 	to_rtrn *= sign;
 	return (to_rtrn);
+}
+
+int	is_overflow(char *s)
+{
+	long long	v;
+
+	v = ft_atoll(s);
+	if (v < INT_MIN || v > INT_MAX)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
+	return (0);
 }

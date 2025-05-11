@@ -1,13 +1,14 @@
 NAME_PROGRAMM = test_parse
 
-CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CC          = gcc
+CFLAGS      = -Wall -Wextra -Werror -g -o0
 
 LIBFT_PATH  = ../../lib/libft/
 LIBFT       = $(LIBFT_PATH)libft.a
 INCLUDES    = -I. -I$(LIBFT_PATH)
 
 SRCS_PROGRAMM = parse.c \
+checkers.c \
 test_parse.c
 
 OBJS_PROGRAMM = $(SRCS_PROGRAMM:.c=.o)
