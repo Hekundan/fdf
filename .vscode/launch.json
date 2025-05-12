@@ -7,20 +7,17 @@
       "request": "launch",
 
       // 1) point to your test binary under the sub‐folder
-      "program": "${workspaceFolder}/src/parsing/test_parse",
+      "program": "${workspaceFolder}/fdf",
 
       // 2) run GDB with cwd in the same folder you built in
-      "cwd": "${workspaceFolder}/src/parsing",
+      "cwd": "${workspaceFolder}",
 
-      "args": [],
-      "stopAtEntry": false,
+      "args": ["42.fdf"],
+      "stopAtEntry": true,
       "externalConsole": false,
 
       // 4) map the compile‐time source roots to your workspace paths
       //    (replace /home/you/project with your real absolute path)
-      "sourceFileMap": {
-        "/home/johartma/dev/rank02/fdf/src/parsing": "${workspaceFolder}/src/parsing"
-      },
 
       "setupCommands": [
         {

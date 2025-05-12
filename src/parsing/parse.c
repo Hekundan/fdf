@@ -6,7 +6,7 @@
 /*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 22:10:57 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/12 01:53:13 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:01:26 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,12 @@ static void	get_points(t_points *point, char *val,
 		(fdf->extremes)[0] = point->fdf_coords[2];
 	if (point->fdf_coords[2] > (fdf->extremes)[1])
 		(fdf->extremes)[1] = point->fdf_coords[2];
-	if (pointcoords[0] < (fdf->dims)[0])
+	if (pointcoords[0] < ((fdf->dims)[0]-1))
 		point->right = point + 1;
 	else
 		point->right = NULL;
-	if (pointcoords[1] < (fdf->dims)[1])
-		point->lower = point + (fdf->dims[0] * pointcoords[1])
-			+ pointcoords[0];
+	if (pointcoords[1] < (fdf->dims)[1]-1)
+		point->lower = point + (fdf->dims[0]);
 	else
 		point->lower = 0;
 	point->calculated = 0;

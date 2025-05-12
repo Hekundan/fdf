@@ -6,7 +6,7 @@
 /*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 22:11:33 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/12 01:16:50 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:59:47 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define FDF_H
 # include "../lib/libft/libft.h"
 # include <mlx.h>
-# define WINDOW_HEIGHT 1000
-# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 500
 # define WINDOW_NAME "FDF"
-# define ANGLE 0.7854f
+# define ISO_ANGLE  0.523598f
+# define TWO_PI_3   2.094395f
 
 typedef struct s_data {
 	void	*img;
@@ -41,6 +42,7 @@ typedef struct s_fdf
 {
 	unsigned int	dims[2];
 	unsigned int	extremes[2];
+	float			project_extremes[4];
 	t_points		*data;
 }	t_fdf;
 
@@ -63,5 +65,6 @@ int			is_overflow(char *s);
 t_fdf		*parse_values(char *filename);
 void		calc_vals(t_fdf *fdf);
 t_data		*push_image(t_mlx_vars *mlx, t_fdf *fdf);
-
+float		scale(t_fdf *fdf);
+int			*offset(t_fdf *fdf);
 #endif
