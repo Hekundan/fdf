@@ -20,11 +20,11 @@ void	ft_itop(int nb, char *string, int *count)
 	{
 		buffer = -nb;
 		string[*count] = '-';
-		(*count)++; 
+		(*count)++;
 	}
 	else
 		buffer = nb;
-	if ((buffer / 10) > 0) 
+	if ((buffer / 10) > 0)
 		ft_itop(buffer / 10, string, count);
 	string[*count] = (buffer % 10) + '0';
 	(*count)++;

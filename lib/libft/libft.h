@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
+/*   By: johartma <johartma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:17:50 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/10 22:08:02 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:21:44 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <sys/types.h>
-
 
 int				ft_printf(const char *fmt, ...);
 int				ft_printf_c(const char c);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
+/*   By: johartma <johartma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 19:13:30 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/11 18:39:47 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:14:04 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,23 @@ int	is_overflow(char *s)
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (1);
+	}
+	return (0);
+}
+
+int	is_not_numeric(char *c)
+{
+	if (!c)
+		return (-1);
+	if (*c == '+' || *c == '-')
+		c++;
+	if (!*c)
+		return (-1);
+	while (*c)
+	{
+		if (*c < '0' || *c > '9')
+			return (1);
+		c++;
 	}
 	return (0);
 }

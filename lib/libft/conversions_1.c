@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversions_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
+/*   By: johartma <johartma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 18:38:35 by johartma          #+#    #+#             */
-/*   Updated: 2025/04/07 12:52:59 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:33:09 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	ft_printf_i(const int i)
 	return (*count);
 }
 
-int	ft_printf_u(unsigned int u)
+int	ft_printf_u(int u)
 {
-	int				count[1];
-	unsigned int	j;
+	int	count[1];
+	int	j;
 
 	j = u;
 	*count = 0;

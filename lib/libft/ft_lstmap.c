@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
+/*   By: johartma <johartma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:16:19 by johartma          #+#    #+#             */
-/*   Updated: 2024/11/28 13:34:54 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:22:41 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-int	ft_check_new_list(void *content, t_list *new_node, 
+int	ft_check_new_list(void *content, t_list *new_node,
 t_list *lst, void (*del)(void *))
 {
 	if (!new_node)

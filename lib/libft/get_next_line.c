@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
+/*   By: johartma <johartma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:14:49 by johartma          #+#    #+#             */
-/*   Updated: 2025/04/16 12:12:36 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:23:22 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	gnl_routine(int fd, char **buffer, char **to_return)
 				return (-1);
 			(*buffer)[read_result] = '\0';
 			if (read_result == 0)
-				return (0); 
+				return (0);
 		}
 		buf_to_res_result = buf_to_res(buffer, to_return);
 		if (buf_to_res_result == 1)

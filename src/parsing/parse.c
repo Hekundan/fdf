@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
+/*   By: johartma <johartma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 22:10:57 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/12 12:01:26 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:38:30 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,6 @@
 #include <fcntl.h>
 #include <error.h>
 #include <limits.h>
-
-static int	is_not_numeric(char *c)
-{
-	if (!c)
-		return (-1);
-	if (*c == '+' || *c == '-')
-		c++;
-	if (!*c)
-		return (-1);
-	while (*c)
-	{
-		if (*c < '0' || *c > '9')
-			return (1);
-		c++;
-	}
-	return (0);
-}
 
 static t_list	*get_lines(char	*filename)
 {
@@ -47,7 +30,7 @@ static t_list	*get_lines(char	*filename)
 	buf = get_next_line(fd);
 	while (buf)
 	{
-		if (buf[ft_strlen(buf) - 1] == '\n') 
+		if (buf[ft_strlen(buf) - 1] == '\n')
 			buf[ft_strlen(buf) - 1] = 0;
 		ft_lstadd_back(&list, ft_lstnew(buf));
 		if (!ft_lstlast(list))
@@ -62,7 +45,7 @@ static t_list	*get_lines(char	*filename)
 }
 
 static void	get_points(t_points *point, char *val,
-	unsigned int pointcoords[2], t_fdf *fdf)
+	int pointcoords[2], t_fdf *fdf)
 {
 	point->fdf_coords[0] = pointcoords[0];
 	point->fdf_coords[1] = pointcoords[1];
@@ -75,11 +58,11 @@ static void	get_points(t_points *point, char *val,
 		(fdf->extremes)[0] = point->fdf_coords[2];
 	if (point->fdf_coords[2] > (fdf->extremes)[1])
 		(fdf->extremes)[1] = point->fdf_coords[2];
-	if (pointcoords[0] < ((fdf->dims)[0]-1))
+	if (pointcoords[0] < ((fdf->dims)[0] - 1))
 		point->right = point + 1;
 	else
 		point->right = NULL;
-	if (pointcoords[1] < (fdf->dims)[1]-1)
+	if (pointcoords[1] < (fdf->dims)[1] - 1)
 		point->lower = point + (fdf->dims[0]);
 	else
 		point->lower = 0;
@@ -88,8 +71,8 @@ static void	get_points(t_points *point, char *val,
 
 static void	parse_core(t_points *points, t_fdf *fdf, t_list *lines)
 {
-	char			**cur_line;
-	unsigned int	pos[3];
+	char	**cur_line;
+	int		pos[3];
 
 	pos[1] = 0;
 	while (lines)
@@ -143,6 +126,8 @@ t_fdf	*parse_values(char	*filename)
 	t_fdf		*self;
 
 	lines = get_lines(filename);
+	if (!lines)
+		error(1, 0, "Empty map");
 	self = init_values(lines);
 	points = malloc(sizeof(*points) * (self->dims)[0] * (self->dims)[1]);
 	if (!points)
@@ -152,4 +137,3 @@ t_fdf	*parse_values(char	*filename)
 	self->data = points;
 	return (self);
 }
-

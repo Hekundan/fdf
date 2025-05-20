@@ -1,7 +1,7 @@
 NAME_PROGRAMM = fdf
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g -o0
+CFLAGS      = -Wall -Werror -Wextra -g
 
 LIBFT_PATH  = lib/libft/
 LIBFT       = $(LIBFT_PATH)libft.a
@@ -14,7 +14,9 @@ src/parsing/checkers.c \
 src/parsing/parse.c \
 src/projection/project.c \
 src/draw/draw.c \
-src/draw/window_management.c
+src/draw/window_management.c \
+src/draw/pixels.c \
+src/draw/vec_ops.c
 
 OBJS_PROGRAMM = $(SRCS_PROGRAMM:.c=.o)
 

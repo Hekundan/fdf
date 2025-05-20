@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johartma <johartma@student.42.de>          +#+  +:+       +#+        */
+/*   By: johartma <johartma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:07:16 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/11 19:37:48 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:22:14 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putnbr_flex(ssize_t nb, int *count, int base_length)
 	{
 		nb = -nb;
 		ft_putchar('-');
-		(*count)++; 
+		(*count)++;
 	}
 	if ((nb / base_length) > 0)
 		ft_putnbr_flex(nb / base_length, count, base_length);
