@@ -6,7 +6,7 @@
 /*   By: johartma <johartma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 18:38:35 by johartma          #+#    #+#             */
-/*   Updated: 2025/05/20 12:33:09 by johartma         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:16:35 by johartma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_printf_i(const int i)
 	return (*count);
 }
 
-int	ft_printf_u(int u)
+int	ft_printf_u(const unsigned int u)
 {
 	int	count[1];
 	int	j;
