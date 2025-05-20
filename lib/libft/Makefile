@@ -70,6 +70,6 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(EXE)
+	rm -f $(EXE) $(OUTPUT)
 
 re: fclean all
